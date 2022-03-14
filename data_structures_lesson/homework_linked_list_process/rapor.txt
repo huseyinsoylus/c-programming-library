@@ -1,0 +1,44 @@
+Huseyin Soylu - 171418012
+Marmara Universitesi Bilgisayar Muhendisligi Bolumu
+BLM2002-Veri Yapilari ve Algoritmalar Dersi - Odev3
+
+Kodlar Linux Mint isletim sistemi 20x surumunde derlenmis ve gdb ile hata ayiklama islemlerine tabi tutulmustur.
+Hic bir hata kodu bulunmamaktadir bunu bir ekran goruntusu ile de destekliyorum. gdb programin ekran goruntusunde gozukmektedir.
+
+Raporu fonksiyonlari sirayla inceleyerek yazmayi sectim. Yani fonksiyon ne yapar, mantigi nedir ve calisma zamani nedir seklinde ilerleyecek.
+*Projede macar notasyonu kullanilmistir.
+Raporda turkce karakter olmama sebebi yurtdisindan gelme orta halli atIl durumda bulunan bir bilgisayar vardi evde degerlendirdim.
+
+
+1-)node Struct:
+---------------
+Javadaki classlarin atasidir. Icerisinde bir adet value adinda int degisken ve bir sonraki struct'in adresini tutacak pointer var.
+
+
+2-) void vfp_create_linked_list(struct node *root, int iv_list_lenght);
+-----------------------------------------------------------------------
+Bu fonksiyonu surekli liste olusturmak icin kod hamalligi olmasin diye yazdim. Icerisinde 1 adet baslangic root pointer ve uzunluk degeri yer almakta. Uzunluk 10 verildiginde root'u 11 elemanli bir bagli listeye donusturmekte. Bunun sebebi ilk elemana spesifik bir deger verme durumu olabilir diye dusundum. Lazim olur diye.
+Fonksiyon calisma zamani O(n)'dir. Iceride bir adet for dongusu kullanildi ve eleman sayisi kadar donmekte.
+
+
+3-)void vfp_print_linked_list(struct node * root);
+--------------------------------------------------
+Bu fonksiyon kendisine parametre olarak verilen bagli listenin elemanlarini ekrana yazdirir. Calisma zamani O(n)'dir. Iceride bir adet dongu kullanilmis ve liste uzunlugu kadar dondugu gorulmektedir.
+
+
+4-)void vf_add_short_linked_list(struct node * list, int add_value);
+-------------------------------------------------------------------
+Bu fonksiyon liste sirali gelecegi soylendigi icin anlik olarak karsilastirma yapmaktadir. Yani girilen deger ilk degerden kucuk mu? Evet ise ilk eleman olarak eklenecek ne nextptr si bagli listenin basina eklenecek. Yine liste icerisinde gezinirken diyelim 3. elemandan buyuk veya esit ve 4. elemandan kucuk veya esit bir sayiysa o anda 3, ve 4. degerin adresini gecici bir degsikende tutup arasina en son ekleme yapiyorum. Algoritma bu sekilde calismakta. Bu yaklasimla O(n-1) suresinde islemi tamamladim. Dongunun tamamini gezmeme sebebim icerde iki elemana bakmamdan dolayi.
+
+5-)double dfp_list_median_calculate(struct node * short_list);
+Bu fonksiyon oncelikle bagli listenin eleman sayisini dondurmekte. Buna gore tek ya da cift mi diye kontrol ettikten sonra isleme tabi tutulmakta. Odev kagidinda verildigi uzere. Calisma zamani O(n)'dir. Toplamda 2n gibi bir sure ancak 2n < cn yani 2 n sonsuza giderken onemsenmeyecek bir degerdir.
+
+6-)void vfp_reverse_linked_list(struct node * list);
+Fonksiyonun calisma zamani O(n)'dir. Cok basit bir sekilde 2 adet tampon bellek ayirdim ve baslangic son olacak sekilde bellek adreslerini yer degistirdim.
+
+
+
+
+
+
+
