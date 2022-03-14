@@ -1,0 +1,60 @@
+Soru 2 Cevaplari
+__________________________________________________________________________________________________________________________________________________________
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(int argc, char *argv[]){
+
+    int *int_ = malloc(sizeof(int)*10);
+    int_[0]=0;
+    int_[1]=1;
+    int_[2]=2;
+
+    printf("int_ = %p\n",int_);
+    printf("int_ + 1 =%p\n",(int_ + 1));
+
+}
+__________________________________________________________________________________________________________________________________________________________
+
+Yukaridaki kisa kod parcaciginda da gorulecegi uzere pointerlarda toplama islemi islem yapilan degisken turunun hafizada kapladigi yer (byte) kadar ileri 
+gitmesi anlamina gelir. Gozle gorulsun diye yukardaki kodu ekledim.
+
+Sirasiyla
+__________________________________________________________________________________________________________________________________________________________
+int_ + 1                                        =4 byte
+__________________________________________________________________________________________________________________________________________________________
+long_ + 7                                       =56 byte
+__________________________________________________________________________________________________________________________________________________________
+short_ - 6                                      =12 byte geriye gider yani -12 de denebilir.
+__________________________________________________________________________________________________________________________________________________________
+long_ - sizeof(long) + sizeof(int_)             =4 byte hazfizada geri gider -4 de denebilir.
+__________________________________________________________________________________________________________________________________________________________
+
+long_ - sizeof(long) / sizeof(int)              =2 byte hafizada geri gider -2 de denebilir.
+__________________________________________________________________________________________________________________________________________________________
+(char*)(int_ptr + sizeof(long)) + sizeof(int_)  = Burada ilk asamada int_ptr den 64  byte kayar sonra bellek alani char tipi pointere cast edilir 
+dolayisiyla 4 x 2 = 8 de ordan gelir. 64 + 8 = 72 byte yer degistirme vardir. 
+__________________________________________________________________________________________________________________________________________________________
+
+En son alandaki yaklasim cok mantikli degildir
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(int argc, char *argv[]){
+
+    int *int_ = malloc(sizeof(int)*10);
+    int_[0]=100;
+    int_[1]=101;
+    printf("Address = %4p & Value = %5d\n",int_,*int_);
+    printf("Adress + 1 =%4p & Value = %5d\n",(int_ + 1), *(int_ + 1));
+    char * cpa_char_array = malloc(sizeof(char)*10);
+    cpa_char_array = (char*)int_;
+    printf("deger = %s\n",cpa_char_array);
+    printf("deger = %s\n",cpa_char_array +2);
+
+}
+
+Koda bakildigi zaman pointer cast isleminden sonra yapinin dizi olma ozelligini kaybettigi gorulur pointer ozelligini de kaybettigi gorulur.
+__________________________________________________________________________________________________________________________________________________________
+
