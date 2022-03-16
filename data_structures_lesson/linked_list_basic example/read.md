@@ -1,0 +1,1 @@
+Devcpp Embarcadero ile geliştirilmiştir.
